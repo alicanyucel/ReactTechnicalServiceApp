@@ -5,6 +5,8 @@ Bu proje, teknik servis yönetimi için modern bir web uygulamasıdır. Kullanı
 
 ## Özellikler
 - **Kullanıcı Girişi:** Ant Design ile şık ve güvenli login ekranı
+- **Kullanıcı Kaydı:** Yeni kullanıcı kayıt formu ile hesap oluşturma
+- **Form Doğrulama:** E-posta formatı ve şifre eşleşme doğrulaması
 - **Müşteri ve Servis Takibi:** Müşteri, cihaz ve servis kayıtlarını kolayca yönetme (geliştirilebilir)
 - **Responsive Tasarım:** Tüm cihazlarda uyumlu ve modern arayüz
 - **Kolay Kurulum:** Docker ve docker-compose ile hızlı başlatma
@@ -29,22 +31,30 @@ docker-compose up --build
 ```
 
 ## Kullanılan Teknolojiler
-- React
-- Ant Design
+- React (Hooks, State Management)
+- Ant Design (UI Components)
 - Docker & Nginx
+- JavaScript (ES6+)
 
 ## Proje Yapısı
 ```
 my-react-app/
 ├── src/
-│   ├── App.js
-│   ├── Login.js
+│   ├── App.js          # Ana uygulama bileşeni
+│   ├── Login.js        # Giriş formu
+│   ├── Register.js     # Kayıt formu
 │   └── ...
-├── Dockerfile
-├── docker-compose.yml
-├── package.json
-└── README.md
+├── Dockerfile          # Docker yapılandırması
+├── docker-compose.yml  # Docker Compose yapılandırması
+├── package.json        # Proje bağımlılıkları
+└── README.md           # Bu dosya
 ```
+
+## Kullanım
+1. Projeyi başlatın: `npm start`
+2. Tarayıcıda http://localhost:3000 adresine gidin
+3. Giriş yapmak için mevcut hesap kullanın veya "Kayıt olun" linkine tıklayın
+4. Yeni hesap oluşturmak için kayıt formunu doldurun
 
 ## Katkı ve Geliştirme
 Projeye katkıda bulunmak için fork'layabilir veya pull request gönderebilirsiniz. Yeni özellik talepleriniz ve hata bildirimleriniz için issue açabilirsiniz.
@@ -52,33 +62,3 @@ Projeye katkıda bulunmak için fork'layabilir veya pull request gönderebilirsi
 ---
 
 **Not:** Bu proje örnek amaçlıdır ve geliştirilmeye açıktır. Güvenlik ve işlevsellik için ek geliştirmeler yapılabilir.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
