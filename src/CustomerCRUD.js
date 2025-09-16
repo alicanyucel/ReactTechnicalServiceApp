@@ -231,7 +231,7 @@ const CustomerCRUD = () => {
           onCancel={handleCancel}
           footer={null}
           width={800}
-          bodyStyle={{ backgroundColor: colors.surface }}
+          bodyStyle={{ backgroundColor: colors.surface, color: colors.text }}
         >
           <Form
             form={form}
@@ -241,48 +241,52 @@ const CustomerCRUD = () => {
               customerType: CustomerType.Individual
             }}
           >
+            {/* input style to match theme */}
+            {/* eslint-disable-next-line */}
+            <div style={{ display: 'none' }} />
+            {/* apply themed styles to inputs and labels */}
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
               <Form.Item
                 name="name"
-                label={t('customer.name')}
+                label={<span style={{ color: colors.text }}>{t('customer.name')}</span>}
                 rules={[{ required: true, message: t('validation.required') }]}
               >
-                <Input />
+                <Input style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
               </Form.Item>
 
               <Form.Item
                 name="surname"
-                label={t('customer.surname')}
+                label={<span style={{ color: colors.text }}>{t('customer.surname')}</span>}
                 rules={[{ required: true, message: t('validation.required') }]}
               >
-                <Input />
+                <Input style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
               </Form.Item>
 
               <Form.Item
                 name="phoneNumber"
-                label={t('customer.phone')}
+                label={<span style={{ color: colors.text }}>{t('customer.phone')}</span>}
                 rules={[{ required: true, message: t('validation.required') }]}
               >
-                <Input />
+                <Input style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
               </Form.Item>
 
               <Form.Item
                 name="email"
-                label={t('customer.email')}
+                label={<span style={{ color: colors.text }}>{t('customer.email')}</span>}
                 rules={[
                   { required: true, message: t('validation.required') },
                   { type: 'email', message: t('validation.email') }
                 ]}
               >
-                <Input />
+                <Input style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
               </Form.Item>
 
               <Form.Item
                 name="customerType"
-                label={t('customer.type')}
+                label={<span style={{ color: colors.text }}>{t('customer.type')}</span>}
                 rules={[{ required: true, message: t('validation.required') }]}
               >
-                <Select>
+                <Select style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} dropdownStyle={{ backgroundColor: colors.surface, color: colors.text }}>
                   <Option value={CustomerType.Individual}>{t('customer.individual')}</Option>
                   <Option value={CustomerType.Corporate}>{t('customer.corporate')}</Option>
                 </Select>
@@ -290,55 +294,55 @@ const CustomerCRUD = () => {
 
               <Form.Item
                 name="city"
-                label={t('customer.city')}
+                label={<span style={{ color: colors.text }}>{t('customer.city')}</span>}
                 rules={[{ required: true, message: t('validation.required') }]}
               >
-                <Input />
+                <Input style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
               </Form.Item>
 
               <Form.Item
                 name="district"
-                label={t('customer.district')}
+                label={<span style={{ color: colors.text }}>{t('customer.district')}</span>}
               >
-                <Input />
+                <Input style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
               </Form.Item>
 
               <Form.Item
                 name="province"
-                label={t('customer.province')}
+                label={<span style={{ color: colors.text }}>{t('customer.province')}</span>}
               >
-                <Input />
+                <Input style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
               </Form.Item>
 
               <Form.Item
                 name="neighborhood"
-                label={t('customer.neighborhood')}
+                label={<span style={{ color: colors.text }}>{t('customer.neighborhood')}</span>}
               >
-                <Input />
+                <Input style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
               </Form.Item>
 
               <Form.Item
                 name="zipCode"
-                label={t('customer.zipCode')}
+                label={<span style={{ color: colors.text }}>{t('customer.zipCode')}</span>}
               >
-                <Input />
+                <Input style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
               </Form.Item>
 
               <Form.Item
                 name="country"
-                label={t('customer.country')}
+                label={<span style={{ color: colors.text }}>{t('customer.country')}</span>}
                 rules={[{ required: true, message: t('validation.required') }]}
               >
-                <Input />
+                <Input style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
               </Form.Item>
             </div>
 
             <Form.Item
               name="address"
-              label={t('customer.address')}
+              label={<span style={{ color: colors.text }}>{t('customer.address')}</span>}
               rules={[{ required: true, message: t('validation.required') }]}
             >
-              <Input.TextArea rows={3} />
+              <Input.TextArea rows={3} style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
             </Form.Item>
 
             <Form.Item style={{ textAlign: 'right', marginBottom: 0 }}>

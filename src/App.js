@@ -121,27 +121,26 @@ function AppContent() {
         </div>
         <CustomerCRUD />
 
-        {/* Footer - Tüm sayfalarda görünür */}
+        {/* Footer - Tüm sayfalarda görünür (themed, high-contrast) */}
         <div style={{
           position: 'fixed',
           bottom: 0,
           left: 0,
           right: 0,
           zIndex: 9999,
-          padding: '12px 16px',
-          backgroundColor: colors.primary,
+          padding: 0,
+          backgroundColor: colors.surface,
           color: colors.text,
           textAlign: 'center',
           fontSize: 12,
-          fontWeight: 'bold',
-          boxShadow: currentTheme === 'dark' ? '0 -2px 8px rgba(255,255,255,0.1)' : '0 -2px 8px rgba(0,0,0,0.1)',
+          fontWeight: '600',
           borderTop: `1px solid ${colors.border}`
         }}>
-          <div style={{ marginBottom: 4 }}>
-            {t('footer.copyright')} | {t('footer.developedBy')}
-          </div>
-          <div style={{ fontSize: 11, opacity: 0.8 }}>
-            {t('footer.description')} - {t('footer.version')}
+          <div style={{ height: 6, background: colors.primary, width: '100%' }} />
+          <div style={{ padding: '10px 16px' }}>
+            <div style={{ marginBottom: 4, color: colors.text }}>
+              {t('footer.copyright')} | {t('footer.developedBy')}
+            </div>
           </div>
         </div>
       </div>
@@ -158,27 +157,29 @@ function AppContent() {
           <Register onSwitchToLogin={switchToLogin} />
         )}
 
-        {/* Footer - Tüm sayfalarda görünür */}
+        {/* Footer - Tüm sayfalarda görünür (themed, high-contrast) */}
         <div style={{
           position: 'fixed',
           bottom: 0,
           left: 0,
           right: 0,
           zIndex: 9999,
-          padding: '12px 16px',
-          backgroundColor: colors.primary,
+          padding: 0,
+          backgroundColor: colors.surface,
           color: colors.text,
           textAlign: 'center',
           fontSize: 12,
-          fontWeight: 'bold',
-          boxShadow: currentTheme === 'dark' ? '0 -2px 8px rgba(255,255,255,0.1)' : '0 -2px 8px rgba(0,0,0,0.1)',
+          fontWeight: '600',
           borderTop: `1px solid ${colors.border}`
         }}>
-          <div style={{ marginBottom: 4 }}>
-            {t('footer.copyright')} | {t('footer.developedBy')}
-          </div>
-          <div style={{ fontSize: 11, opacity: 0.8 }}>
-            {t('footer.description')} - {t('footer.version')}
+          <div style={{ height: 6, background: colors.primary, width: '100%' }} />
+          <div style={{ padding: '10px 16px' }}>
+            <div style={{ marginBottom: 4, color: colors.text }}>
+              {t('footer.copyright')} | {t('footer.developedBy')}
+            </div>
+            <div style={{ fontSize: 11, opacity: 0.85, color: colors.textSecondary }}>
+              {t('footer.description')} - {t('footer.version')}
+            </div>
           </div>
         </div>
       </div>
