@@ -4,10 +4,13 @@ import 'antd/dist/reset.css';
 
 const { Link } = Typography;
 
-const Login = ({ onSwitchToRegister }) => {
+const Login = ({ onSwitchToRegister, onLogin }) => {
   const onFinish = (values) => {
     console.log('Success:', values);
     // Giriş işlemleri burada yapılabilir
+    if (onLogin) {
+      onLogin(values);
+    }
   };
 
   const onFinishFailed = (errorInfo) => {
