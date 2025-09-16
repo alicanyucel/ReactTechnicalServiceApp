@@ -1,0 +1,68 @@
+{
+  "app": {
+    "title": "Technical Service Management",
+    "login": "Login",
+    "register": "Register",
+    "logout": "Logout",
+    "username": "Username",
+    "password": "Password",
+    "email": "Email",
+    "confirmPassword": "Confirm Password",
+    "rememberMe": "Remember Me",
+    "loginButton": "Login",
+    "registerButton": "Register",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?",
+    "acceptTerms": "I accept the terms and conditions",
+    "loginSuccess": "Login successful!",
+    "registerSuccess": "Registration successful!",
+    "loginError": "Error during login",
+    "registerError": "Error during registration"
+  },
+  "customer": {
+    "management": "Customer Management",
+    "addNew": "Add New Customer",
+    "edit": "Edit Customer",
+    "delete": "Delete",
+    "name": "Name",
+    "surname": "Surname",
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address",
+    "city": "City",
+    "country": "Country",
+    "zipCode": "Zip Code",
+    "district": "District",
+    "province": "Province",
+    "neighborhood": "Neighborhood",
+    "type": "Customer Type",
+    "individual": "Individual",
+    "corporate": "Corporate",
+    "save": "Save",
+    "cancel": "Cancel",
+    "confirmDelete": "Are you sure you want to delete this customer?",
+    "deleteSuccess": "Customer deleted successfully",
+    "saveSuccess": "Customer saved successfully",
+    "updateSuccess": "Customer updated successfully"
+  },
+  "theme": {
+    "light": "Light Theme",
+    "dark": "Dark Theme",
+    "yellowRed": "Yellow-Red Theme",
+    "switchTheme": "Switch Theme"
+  },
+  "language": {
+    "turkish": "Türkçe",
+    "english": "English",
+    "switchLanguage": "Switch Language"
+  },
+  "footer": {
+    "copyright": "© 2025 Mudbey Software - All Rights Reserved"
+  },
+  "validation": {
+    "required": "This field is required",
+    "email": "Please enter a valid email address",
+    "passwordMismatch": "Passwords do not match",
+    "minLength": "Must be at least {{count}} characters"
+  }
+}

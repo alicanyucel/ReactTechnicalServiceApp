@@ -15,6 +15,7 @@ import {
 import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import 'antd/dist/reset.css';
 import { useTheme } from './ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -27,6 +28,7 @@ const CustomerType = {
 
 const CustomerCRUD = () => {
   const { colors, currentTheme } = useTheme();
+  const { t } = useTranslation();
   const [customers, setCustomers] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [editingCustomer, setEditingCustomer] = useState(null);
@@ -196,7 +198,7 @@ const CustomerCRUD = () => {
     <div style={{ padding: 24, backgroundColor: colors.background, color: colors.text }}>
       <Card style={{ backgroundColor: colors.surface, borderColor: colors.border }}>
         <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', marginBottom: 16, gap: 16 }}>
-          <Title level={2} style={{ margin: 0, color: colors.text }}>Müşteri Yönetimi</Title>
+          <Title level={2} style={{ margin: 0, color: colors.text }}>{t('customer.management')}</Title>
           <Button
             type="primary"
             icon={<PlusOutlined />}
@@ -204,7 +206,7 @@ const CustomerCRUD = () => {
             size="large"
             style={{ backgroundColor: colors.primary, borderColor: colors.primary }}
           >
-            Yeni Müşteri Ekle
+            {t('customer.addNew')}
           </Button>
         </div>
 
@@ -224,7 +226,7 @@ const CustomerCRUD = () => {
         />
 
         <Modal
-          title={<span style={{ color: colors.text }}>{editingCustomer ? "Müşteri Düzenle" : "Yeni Müşteri Ekle"}</span>}
+          title={<span style={{ color: colors.text }}>{editingCustomer ? t('customer.edit') : t('customer.addNew')}</span>}
           open={isModalVisible}
           onCancel={handleCancel}
           footer={null}
@@ -342,10 +344,10 @@ const CustomerCRUD = () => {
             <Form.Item style={{ textAlign: 'right', marginBottom: 0 }}>
               <Space>
                 <Button onClick={handleCancel}>
-                  İptal
+                  {t('customer.cancel')}
                 </Button>
                 <Button type="primary" htmlType="submit">
-                  {editingCustomer ? 'Güncelle' : 'Ekle'}
+                  {editingCustomer ? t('customer.save') : t('customer.save')}
                 </Button>
               </Space>
             </Form.Item>

@@ -2,11 +2,13 @@ import React from 'react';
 import { Form, Input, Button, Checkbox, Card, Typography } from 'antd';
 import 'antd/dist/reset.css';
 import { useTheme } from './ThemeContext';
+import { useTranslation } from 'react-i18next';
 
 const { Link } = Typography;
 
 const Register = ({ onSwitchToLogin }) => {
   const { colors } = useTheme();
+  const { t } = useTranslation();
   const onFinish = (values) => {
     console.log('Success:', values);
     // Kayıt işlemleri burada yapılabilir
@@ -18,7 +20,7 @@ const Register = ({ onSwitchToLogin }) => {
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: colors.background }}>
-      <Card title={<div style={{textAlign: 'center', width: '100%', color: colors.text}}>Kayıt Ol</div>} style={{ width: 400, backgroundColor: colors.surface, borderColor: colors.border }}>
+      <Card title={<div style={{textAlign: 'center', width: '100%', color: colors.text}}>{t('app.register')}</div>} style={{ width: 400, backgroundColor: colors.surface, borderColor: colors.border }}>
         <Form
           name="register"
           initialValues={{ remember: true }}
@@ -28,44 +30,44 @@ const Register = ({ onSwitchToLogin }) => {
           wrapperCol={{ span: 16 }}
         >
           <Form.Item
-            label="Kullanıcı Adı"
+            label={t('app.username')}
             name="username"
-            rules={[{ required: true, message: 'Lütfen kullanıcı adınızı girin!' }]}
+            rules={[{ required: true, message: t('validation.required') }]}
           >
             <Input style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
           </Form.Item>
 
           <Form.Item
-            label="E-posta"
+            label={t('app.email')}
             name="email"
             rules={[
-              { required: true, message: 'Lütfen e-posta adresinizi girin!' },
-              { type: 'email', message: 'Geçerli bir e-posta girin!' }
+              { required: true, message: t('validation.required') },
+              { type: 'email', message: t('validation.email') }
             ]}
           >
             <Input style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
           </Form.Item>
 
           <Form.Item
-            label="Şifre"
+            label={t('app.password')}
             name="password"
-            rules={[{ required: true, message: 'Lütfen şifrenizi girin!' }]}
+            rules={[{ required: true, message: t('validation.required') }]}
           >
             <Input.Password style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
           </Form.Item>
 
           <Form.Item
-            label="Şifre Tekrar"
+            label={t('app.confirmPassword')}
             name="confirm"
             dependencies={["password"]}
             rules={[
-              { required: true, message: 'Lütfen şifrenizi tekrar girin!' },
+              { required: true, message: t('validation.required') },
               ({ getFieldValue }) => ({
                 validator(_, value) {
                   if (!value || getFieldValue('password') === value) {
                     return Promise.resolve();
                   }
-                  return Promise.reject(new Error('Şifreler eşleşmiyor!'));
+                  return Promise.reject(new Error(t('validation.passwordMismatch')));
                 },
               }),
             ]}
@@ -74,17 +76,17 @@ const Register = ({ onSwitchToLogin }) => {
           </Form.Item>
 
           <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-            <Checkbox style={{ color: colors.text }}>Kullanım koşullarını kabul ediyorum</Checkbox>
+            <Checkbox style={{ color: colors.text }}>{t('app.acceptTerms')}</Checkbox>
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }} style={{ display: 'flex', justifyContent: 'center' }}>
             <Button type="primary" htmlType="submit" style={{ backgroundColor: colors.primary, borderColor: colors.primary }}>
-              Kayıt Ol
+              {t('app.registerButton')}
             </Button>
           </Form.Item>
         </Form>
         <div style={{ textAlign: 'center', marginTop: 16 }}>
-          <Link onClick={onSwitchToLogin} style={{ color: colors.primary }}>Zaten hesabınız var mı? Giriş yapın</Link>
+          <Link onClick={onSwitchToLogin} style={{ color: colors.primary }}>{t('app.hasAccount')} {t('app.login')}</Link>
         </div>
       </Card>
     </div>

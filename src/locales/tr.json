@@ -1,0 +1,68 @@
+{
+  "app": {
+    "title": "Teknik Servis Yönetimi",
+    "login": "Giriş Yap",
+    "register": "Kayıt Ol",
+    "logout": "Çıkış Yap",
+    "username": "Kullanıcı Adı",
+    "password": "Şifre",
+    "email": "E-posta",
+    "confirmPassword": "Şifre Tekrar",
+    "rememberMe": "Beni Hatırla",
+    "loginButton": "Giriş Yap",
+    "registerButton": "Kayıt Ol",
+    "noAccount": "Hesabınız yok mu?",
+    "hasAccount": "Zaten hesabınız var mı?",
+    "acceptTerms": "Kullanım koşullarını kabul ediyorum",
+    "loginSuccess": "Giriş başarılı!",
+    "registerSuccess": "Kayıt başarılı!",
+    "loginError": "Giriş yapılırken hata oluştu",
+    "registerError": "Kayıt yapılırken hata oluştu"
+  },
+  "customer": {
+    "management": "Müşteri Yönetimi",
+    "addNew": "Yeni Müşteri Ekle",
+    "edit": "Müşteri Düzenle",
+    "delete": "Sil",
+    "name": "Ad",
+    "surname": "Soyad",
+    "phone": "Telefon",
+    "email": "E-posta",
+    "address": "Adres",
+    "city": "Şehir",
+    "country": "Ülke",
+    "zipCode": "Posta Kodu",
+    "district": "İlçe",
+    "province": "İl",
+    "neighborhood": "Mahalle",
+    "type": "Müşteri Tipi",
+    "individual": "Bireysel",
+    "corporate": "Kurumsal",
+    "save": "Kaydet",
+    "cancel": "İptal",
+    "confirmDelete": "Bu müşteriyi silmek istediğinizden emin misiniz?",
+    "deleteSuccess": "Müşteri başarıyla silindi",
+    "saveSuccess": "Müşteri başarıyla kaydedildi",
+    "updateSuccess": "Müşteri başarıyla güncellendi"
+  },
+  "theme": {
+    "light": "Açık Tema",
+    "dark": "Koyu Tema",
+    "yellowRed": "Sarı-Kırmızı Tema",
+    "switchTheme": "Tema Değiştir"
+  },
+  "language": {
+    "turkish": "Türkçe",
+    "english": "English",
+    "switchLanguage": "Dil Değiştir"
+  },
+  "footer": {
+    "copyright": "© 2025 Mudbey Yazılım - Tüm Hakları Saklıdır"
+  },
+  "validation": {
+    "required": "Bu alan zorunludur",
+    "email": "Geçerli bir e-posta adresi girin",
+    "passwordMismatch": "Şifreler eşleşmiyor",
+    "minLength": "En az {{count}} karakter olmalıdır"
+  }
+}

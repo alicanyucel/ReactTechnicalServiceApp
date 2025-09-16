@@ -5,13 +5,15 @@ import Login from './Login';
 import Register from './Register';
 import CustomerCRUD from './CustomerCRUD';
 import { ThemeProvider, useTheme } from './ThemeContext';
-import { SunOutlined, MoonOutlined, FireOutlined } from '@ant-design/icons';
+import { SunOutlined, MoonOutlined, FireOutlined, GlobalOutlined } from '@ant-design/icons';
 import { Button, Space } from 'antd';
+import { useTranslation } from 'react-i18next';
 
 function AppContent() {
   const [currentScreen, setCurrentScreen] = useState('login');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { currentTheme, toggleTheme, colors } = useTheme();
+  const { t, i18n } = useTranslation();
 
   const switchToRegister = () => {
     setCurrentScreen('register');
@@ -46,12 +48,21 @@ function AppContent() {
   const getThemeText = () => {
     switch (currentTheme) {
       case 'dark':
-        return 'Koyu Tema';
+        return t('theme.dark');
       case 'yellow-red':
-        return 'Sarı-Kırmızı Tema';
+        return t('theme.yellowRed');
       default:
-        return 'Açık Tema';
+        return t('theme.light');
     }
+  };
+
+  const toggleLanguage = () => {
+    const newLang = i18n.language === 'tr' ? 'en' : 'tr';
+    i18n.changeLanguage(newLang);
+  };
+
+  const getLanguageText = () => {
+    return i18n.language === 'tr' ? 'EN' : 'TR';
   };
 
   if (isLoggedIn && currentScreen === 'dashboard') {
@@ -66,17 +77,23 @@ function AppContent() {
           alignItems: 'center',
           borderBottom: `1px solid ${colors.border}`
         }}>
-          <h2 style={{ margin: 0, color: colors.text }}>Teknik Servis Yönetimi</h2>
+          <h2 style={{ margin: 0, color: colors.text }}>{t('app.title')}</h2>
           <Space>
+            <Button
+              type="text"
+              icon={<GlobalOutlined />}
+              onClick={toggleLanguage}
+              style={{ color: colors.text }}
+              title={t('language.switchLanguage')}
+            >
+              {getLanguageText()}
+            </Button>
             <Button
               type="text"
               icon={getThemeIcon()}
               onClick={toggleTheme}
-              style={{
-                color: colors.text,
-                border: `1px solid ${colors.border}`,
-                backgroundColor: colors.surface
-              }}
+              style={{ color: colors.text }}
+              title={t('theme.switchTheme')}
             >
               {getThemeText()}
             </Button>
@@ -91,7 +108,7 @@ function AppContent() {
                 cursor: 'pointer'
               }}
             >
-              Çıkış Yap
+              {t('app.logout')}
             </button>
           </Space>
         </div>
@@ -143,7 +160,7 @@ function AppContent() {
         boxShadow: currentTheme === 'dark' ? '0 -2px 8px rgba(255,255,255,0.1)' : '0 -2px 8px rgba(0,0,0,0.1)',
         borderTop: `1px solid ${colors.border}`
       }}>
-        © 2025 Mudbey Yazılım - Tüm Hakları Saklıdır
+        {t('footer.copyright')}
       </div>
     </div>
   );
