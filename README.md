@@ -1,14 +1,5 @@
 
-# Te## Özellikler
-- **Kullanıcı Girişi:** Ant Design ile şık ve güvenli login ekranı
-- **Kullanıcı Kaydı:** Yeni kullanıcı kayıt formu ile hesap oluşturma
-- **Müşteri Yönetimi:** Tam CRUD işlemleri (Ekle, Listele, Güncelle, Sil) - Sol taraflı buton yerleşimi
-- **Üç Tema Desteği:** Güneş, ay ve ateş ikonları ile açık/koyu/sarı-kırmızı tema değiştirme
-- **Form Doğrulama:** E-posta formatı ve şifre eşleşme doğrulaması
-- **Footer:** Açık mavi arka planlı, koyu siyah yazılı sabit footer (z-index ile en üstte)
-- **Müşteri ve Servis Takibi:** Müşteri, cihaz ve servis kayıtlarını kolayca yönetme (geliştirilebilir)
-- **Responsive Tasarım:** Tüm cihazlarda uyumlu ve modern arayüz
-- **Kolay Kurulum:** Docker ve docker-compose ile hızlı başlatmais React Projesi
+# Teknik Servis Yönetim Sistemi
 
 Bu proje, teknik servis yönetimi için modern bir web uygulamasıdır. Kullanıcı dostu arayüzü ve güçlü altyapısı ile servis taleplerinin, müşteri bilgilerinin ve işlemlerin kolayca yönetilmesini sağlar.
 
@@ -84,6 +75,9 @@ my-react-app/
 
 ## Katkı ve Geliştirme
 Projeye katkıda bulunmak için fork'layabilir veya pull request gönderebilirsiniz. Yeni özellik talepleriniz ve hata bildirimleriniz için issue açabilirsiniz.
+
+## Geliştirici
+Bu proje **Ali Can Yücel** Lead Developer tarafından geliştirilmiştir.
 
 ---
 
