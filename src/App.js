@@ -110,7 +110,7 @@ function AppContent() {
           textAlign: 'center',
           fontSize: 14,
           fontWeight: 'bold',
-          boxShadow: isDarkMode ? '0 -2px 8px rgba(255,255,255,0.1)' : '0 -2px 8px rgba(0,0,0,0.1)',
+          boxShadow: currentTheme === 'dark' ? '0 -2px 8px rgba(255,255,255,0.1)' : '0 -2px 8px rgba(0,0,0,0.1)',
           borderTop: `1px solid ${colors.border}`
         }}>
           © 2025 Mudbey Yazılım - Tüm Hakları Saklıdır
@@ -140,7 +140,7 @@ function AppContent() {
         textAlign: 'center',
         fontSize: 14,
         fontWeight: 'bold',
-        boxShadow: isDarkMode ? '0 -2px 8px rgba(255,255,255,0.1)' : '0 -2px 8px rgba(0,0,0,0.1)',
+        boxShadow: currentTheme === 'dark' ? '0 -2px 8px rgba(255,255,255,0.1)' : '0 -2px 8px rgba(0,0,0,0.1)',
         borderTop: `1px solid ${colors.border}`
       }}>
         © 2025 Mudbey Yazılım - Tüm Hakları Saklıdır
