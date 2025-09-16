@@ -57,12 +57,18 @@
     "switchLanguage": "Switch Language"
   },
   "footer": {
-    "copyright": "© 2025 Mudbey Software - All Rights Reserved"
+    "copyright": "© 2025 Mudbey Software - All Rights Reserved",
+    "developedBy": "Developed by Ali Can Yücel",
+    "version": "v1.0.0",
+    "description": "Modern Technical Service Management System"
   },
   "validation": {
     "required": "This field is required",
     "email": "Please enter a valid email address",
     "passwordMismatch": "Passwords do not match",
     "minLength": "Must be at least {{count}} characters"
+  },
+  "pagination": {
+    "showTotal": "Showing {{start}}-{{end}} of {{total}} customers"
   }
 }

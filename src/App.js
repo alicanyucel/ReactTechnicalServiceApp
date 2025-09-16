@@ -6,14 +6,20 @@ import Register from './Register';
 import CustomerCRUD from './CustomerCRUD';
 import { ThemeProvider, useTheme } from './ThemeContext';
 import { SunOutlined, MoonOutlined, FireOutlined, GlobalOutlined } from '@ant-design/icons';
-import { Button, Space } from 'antd';
+import { Button, Space, ConfigProvider } from 'antd';
 import { useTranslation } from 'react-i18next';
+import trTR from 'antd/locale/tr_TR';
+import enUS from 'antd/locale/en_US';
 
 function AppContent() {
   const [currentScreen, setCurrentScreen] = useState('login');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const { currentTheme, toggleTheme, colors } = useTheme();
   const { t, i18n } = useTranslation();
+
+  const getAntdLocale = () => {
+    return i18n.language === 'tr' ? trTR : enUS;
+  };
 
   const switchToRegister = () => {
     setCurrentScreen('register');
@@ -67,7 +73,8 @@ function AppContent() {
 
   if (isLoggedIn && currentScreen === 'dashboard') {
     return (
-      <div className="App" style={{ backgroundColor: colors.background, color: colors.text, minHeight: '100vh' }}>
+      <ConfigProvider locale={getAntdLocale()}>
+        <div className="App" style={{ backgroundColor: colors.background, color: colors.text, minHeight: '100vh' }}>
         <div style={{
           padding: 16,
           background: colors.surface,
@@ -121,48 +128,61 @@ function AppContent() {
           left: 0,
           right: 0,
           zIndex: 9999,
-          padding: 16,
+          padding: '12px 16px',
           backgroundColor: colors.primary,
           color: colors.text,
           textAlign: 'center',
-          fontSize: 14,
+          fontSize: 12,
           fontWeight: 'bold',
           boxShadow: currentTheme === 'dark' ? '0 -2px 8px rgba(255,255,255,0.1)' : '0 -2px 8px rgba(0,0,0,0.1)',
           borderTop: `1px solid ${colors.border}`
         }}>
-          © 2025 Mudbey Yazılım - Tüm Hakları Saklıdır
+          <div style={{ marginBottom: 4 }}>
+            {t('footer.copyright')} | {t('footer.developedBy')}
+          </div>
+          <div style={{ fontSize: 11, opacity: 0.8 }}>
+            {t('footer.description')} - {t('footer.version')}
+          </div>
         </div>
       </div>
+    </ConfigProvider>
     );
   }
 
   return (
-    <div className="App" style={{ backgroundColor: colors.background, color: colors.text, minHeight: '100vh' }}>
-      {currentScreen === 'login' ? (
-        <Login onSwitchToRegister={switchToRegister} onLogin={handleLogin} />
-      ) : (
-        <Register onSwitchToLogin={switchToLogin} />
-      )}
+    <ConfigProvider locale={getAntdLocale()}>
+      <div className="App" style={{ backgroundColor: colors.background, color: colors.text, minHeight: '100vh' }}>
+        {currentScreen === 'login' ? (
+          <Login onSwitchToRegister={switchToRegister} onLogin={handleLogin} />
+        ) : (
+          <Register onSwitchToLogin={switchToLogin} />
+        )}
 
-      {/* Footer - Tüm sayfalarda görünür */}
-      <div style={{
-        position: 'fixed',
-        bottom: 0,
-        left: 0,
-        right: 0,
-        zIndex: 9999,
-        padding: 16,
-        backgroundColor: colors.primary,
-        color: colors.text,
-        textAlign: 'center',
-        fontSize: 14,
-        fontWeight: 'bold',
-        boxShadow: currentTheme === 'dark' ? '0 -2px 8px rgba(255,255,255,0.1)' : '0 -2px 8px rgba(0,0,0,0.1)',
-        borderTop: `1px solid ${colors.border}`
-      }}>
-        {t('footer.copyright')}
+        {/* Footer - Tüm sayfalarda görünür */}
+        <div style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 9999,
+          padding: '12px 16px',
+          backgroundColor: colors.primary,
+          color: colors.text,
+          textAlign: 'center',
+          fontSize: 12,
+          fontWeight: 'bold',
+          boxShadow: currentTheme === 'dark' ? '0 -2px 8px rgba(255,255,255,0.1)' : '0 -2px 8px rgba(0,0,0,0.1)',
+          borderTop: `1px solid ${colors.border}`
+        }}>
+          <div style={{ marginBottom: 4 }}>
+            {t('footer.copyright')} | {t('footer.developedBy')}
+          </div>
+          <div style={{ fontSize: 11, opacity: 0.8 }}>
+            {t('footer.description')} - {t('footer.version')}
+          </div>
+        </div>
       </div>
-    </div>
+    </ConfigProvider>
   );
 }
 

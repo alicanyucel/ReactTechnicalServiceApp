@@ -57,12 +57,18 @@
     "switchLanguage": "Dil Değiştir"
   },
   "footer": {
-    "copyright": "© 2025 Mudbey Yazılım - Tüm Hakları Saklıdır"
+    "copyright": "© 2025 Mudbey Yazılım - Tüm Hakları Saklıdır",
+    "developedBy": "Ali Can Yücel Tarafından Geliştirildi",
+    "version": "v1.0.0",
+    "description": "Modern Teknik Servis Yönetim Sistemi"
   },
   "validation": {
     "required": "Bu alan zorunludur",
     "email": "Geçerli bir e-posta adresi girin",
     "passwordMismatch": "Şifreler eşleşmiyor",
     "minLength": "En az {{count}} karakter olmalıdır"
+  },
+  "pagination": {
+    "showTotal": "{{total}} müşteri arasından {{start}}-{{end}} arası gösteriliyor"
   }
 }

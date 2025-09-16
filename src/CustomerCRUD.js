@@ -96,7 +96,7 @@ const CustomerCRUD = () => {
           ? { ...cust, ...values }
           : cust
       ));
-      message.success('Müşteri başarıyla güncellendi!');
+      message.success(t('customer.updateSuccess'));
     } else {
       // Yeni ekleme
       const newCustomer = {
@@ -104,7 +104,7 @@ const CustomerCRUD = () => {
         id: Math.max(...customers.map(c => c.id), 0) + 1
       };
       setCustomers([...customers, newCustomer]);
-      message.success('Müşteri başarıyla eklendi!');
+      message.success(t('customer.saveSuccess'));
     }
 
     setIsModalVisible(false);
@@ -114,7 +114,7 @@ const CustomerCRUD = () => {
 
   const handleDelete = (id) => {
     setCustomers(customers.filter(cust => cust.id !== id));
-    message.success('Müşteri başarıyla silindi!');
+    message.success(t('customer.deleteSuccess'));
   };
 
   const columns = [
@@ -125,32 +125,32 @@ const CustomerCRUD = () => {
       width: 80,
     },
     {
-      title: 'Ad',
+      title: t('customer.name'),
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: 'Soyad',
+      title: t('customer.surname'),
       dataIndex: 'surname',
       key: 'surname',
     },
     {
-      title: 'Telefon',
+      title: t('customer.phone'),
       dataIndex: 'phoneNumber',
       key: 'phoneNumber',
     },
     {
-      title: 'E-posta',
+      title: t('customer.email'),
       dataIndex: 'email',
       key: 'email',
     },
     {
-      title: 'Şehir',
+      title: t('customer.city'),
       dataIndex: 'city',
       key: 'city',
     },
     {
-      title: 'Müşteri Tipi',
+      title: t('customer.type'),
       dataIndex: 'customerType',
       key: 'customerType',
       render: (type) => (
@@ -158,12 +158,12 @@ const CustomerCRUD = () => {
           color: type === CustomerType.Individual ? '#1890ff' : '#52c41a',
           fontWeight: 'bold'
         }}>
-          {type === CustomerType.Individual ? 'Bireysel' : 'Kurumsal'}
+          {type === CustomerType.Individual ? t('customer.individual') : t('customer.corporate')}
         </span>
       ),
     },
     {
-      title: 'İşlemler',
+      title: t('customer.edit'),
       key: 'actions',
       render: (_, record) => (
         <Space size="middle">
@@ -173,20 +173,20 @@ const CustomerCRUD = () => {
             onClick={() => showModal(record)}
             size="small"
           >
-            Düzenle
+            {t('customer.edit')}
           </Button>
           <Popconfirm
-            title="Bu müşteriyi silmek istediğinizden emin misiniz?"
+            title={t('customer.confirmDelete')}
             onConfirm={() => handleDelete(record.id)}
-            okText="Evet"
-            cancelText="Hayır"
+            okText={t('customer.save')}
+            cancelText={t('customer.cancel')}
           >
             <Button
               type="danger"
               icon={<DeleteOutlined />}
               size="small"
             >
-              Sil
+              {t('customer.delete')}
             </Button>
           </Popconfirm>
         </Space>
@@ -219,7 +219,7 @@ const CustomerCRUD = () => {
             showSizeChanger: true,
             showQuickJumper: true,
             showTotal: (total, range) =>
-              `${total} müşteri arasından ${range[0]}-${range[1]} arası gösteriliyor`,
+              t('pagination.showTotal', { total, start: range[0], end: range[1] }),
             position: ['bottomCenter'],
           }}
           scroll={{ x: 1200 }}
@@ -244,34 +244,34 @@ const CustomerCRUD = () => {
             <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
               <Form.Item
                 name="name"
-                label="Ad"
-                rules={[{ required: true, message: 'Lütfen ad girin!' }]}
+                label={t('customer.name')}
+                rules={[{ required: true, message: t('validation.required') }]}
               >
                 <Input />
               </Form.Item>
 
               <Form.Item
                 name="surname"
-                label="Soyad"
-                rules={[{ required: true, message: 'Lütfen soyad girin!' }]}
+                label={t('customer.surname')}
+                rules={[{ required: true, message: t('validation.required') }]}
               >
                 <Input />
               </Form.Item>
 
               <Form.Item
                 name="phoneNumber"
-                label="Telefon"
-                rules={[{ required: true, message: 'Lütfen telefon numarası girin!' }]}
+                label={t('customer.phone')}
+                rules={[{ required: true, message: t('validation.required') }]}
               >
                 <Input />
               </Form.Item>
 
               <Form.Item
                 name="email"
-                label="E-posta"
+                label={t('customer.email')}
                 rules={[
-                  { required: true, message: 'Lütfen e-posta girin!' },
-                  { type: 'email', message: 'Geçerli bir e-posta adresi girin!' }
+                  { required: true, message: t('validation.required') },
+                  { type: 'email', message: t('validation.email') }
                 ]}
               >
                 <Input />
@@ -279,55 +279,55 @@ const CustomerCRUD = () => {
 
               <Form.Item
                 name="customerType"
-                label="Müşteri Tipi"
-                rules={[{ required: true, message: 'Lütfen müşteri tipi seçin!' }]}
+                label={t('customer.type')}
+                rules={[{ required: true, message: t('validation.required') }]}
               >
                 <Select>
-                  <Option value={CustomerType.Individual}>Bireysel</Option>
-                  <Option value={CustomerType.Corporate}>Kurumsal</Option>
+                  <Option value={CustomerType.Individual}>{t('customer.individual')}</Option>
+                  <Option value={CustomerType.Corporate}>{t('customer.corporate')}</Option>
                 </Select>
               </Form.Item>
 
               <Form.Item
                 name="city"
-                label="Şehir"
-                rules={[{ required: true, message: 'Lütfen şehir girin!' }]}
+                label={t('customer.city')}
+                rules={[{ required: true, message: t('validation.required') }]}
               >
                 <Input />
               </Form.Item>
 
               <Form.Item
                 name="district"
-                label="İlçe"
+                label={t('customer.district')}
               >
                 <Input />
               </Form.Item>
 
               <Form.Item
                 name="province"
-                label="İl"
+                label={t('customer.province')}
               >
                 <Input />
               </Form.Item>
 
               <Form.Item
                 name="neighborhood"
-                label="Mahalle"
+                label={t('customer.neighborhood')}
               >
                 <Input />
               </Form.Item>
 
               <Form.Item
                 name="zipCode"
-                label="Posta Kodu"
+                label={t('customer.zipCode')}
               >
                 <Input />
               </Form.Item>
 
               <Form.Item
                 name="country"
-                label="Ülke"
-                rules={[{ required: true, message: 'Lütfen ülke girin!' }]}
+                label={t('customer.country')}
+                rules={[{ required: true, message: t('validation.required') }]}
               >
                 <Input />
               </Form.Item>
@@ -335,8 +335,8 @@ const CustomerCRUD = () => {
 
             <Form.Item
               name="address"
-              label="Adres"
-              rules={[{ required: true, message: 'Lütfen adres girin!' }]}
+              label={t('customer.address')}
+              rules={[{ required: true, message: t('validation.required') }]}
             >
               <Input.TextArea rows={3} />
             </Form.Item>
