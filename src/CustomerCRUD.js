@@ -193,8 +193,8 @@ const CustomerCRUD = () => {
   return (
     <div style={{ padding: 24 }}>
       <Card>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
-          <Title level={2}>Müşteri Yönetimi</Title>
+        <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', marginBottom: 16, gap: 16 }}>
+          <Title level={2} style={{ margin: 0 }}>Müşteri Yönetimi</Title>
           <Button
             type="primary"
             icon={<PlusOutlined />}
@@ -215,6 +215,7 @@ const CustomerCRUD = () => {
             showQuickJumper: true,
             showTotal: (total, range) =>
               `${total} müşteri arasından ${range[0]}-${range[1]} arası gösteriliyor`,
+            position: ['bottomCenter'],
           }}
           scroll={{ x: 1200 }}
         />

@@ -6,8 +6,9 @@ Bu proje, teknik servis yönetimi için modern bir web uygulamasıdır. Kullanı
 ## Özellikler
 - **Kullanıcı Girişi:** Ant Design ile şık ve güvenli login ekranı
 - **Kullanıcı Kaydı:** Yeni kullanıcı kayıt formu ile hesap oluşturma
-- **Müşteri Yönetimi:** Tam CRUD işlemleri (Ekle, Listele, Güncelle, Sil)
+- **Müşteri Yönetimi:** Tam CRUD işlemleri (Ekle, Listele, Güncelle, Sil) - Sol taraflı buton yerleşimi
 - **Form Doğrulama:** E-posta formatı ve şifre eşleşme doğrulaması
+- **Footer:** Açık mavi arka planlı, koyu siyah yazılı sabit footer (z-index ile en üstte)
 - **Müşteri ve Servis Takibi:** Müşteri, cihaz ve servis kayıtlarını kolayca yönetme (geliştirilebilir)
 - **Responsive Tasarım:** Tüm cihazlarda uyumlu ve modern arayüz
 - **Kolay Kurulum:** Docker ve docker-compose ile hızlı başlatma

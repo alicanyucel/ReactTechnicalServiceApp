@@ -53,6 +53,24 @@ function App() {
           </button>
         </div>
         <CustomerCRUD />
+
+        {/* Footer - Tüm sayfalarda görünür */}
+        <div style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: 9999,
+          padding: 16,
+          backgroundColor: '#87CEEB',
+          color: '#000000',
+          textAlign: 'center',
+          fontSize: 14,
+          fontWeight: 'bold',
+          boxShadow: '0 -2px 8px rgba(0,0,0,0.1)'
+        }}>
+          © 2025 Mudbey Yazılım - Tüm Hakları Saklıdır
+        </div>
       </div>
     );
   }
@@ -64,6 +82,24 @@ function App() {
       ) : (
         <Register onSwitchToLogin={switchToLogin} />
       )}
+
+      {/* Footer - Tüm sayfalarda görünür */}
+      <div style={{
+        position: 'fixed',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        zIndex: 9999,
+        padding: 16,
+        backgroundColor: '#87CEEB',
+        color: '#000000',
+        textAlign: 'center',
+        fontSize: 14,
+        fontWeight: 'bold',
+        boxShadow: '0 -2px 8px rgba(0,0,0,0.1)'
+      }}>
+        © 2025 Mudbey Yazılım - Tüm Hakları Saklıdır
+      </div>
     </div>
   );
 }
