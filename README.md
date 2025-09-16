@@ -1,5 +1,14 @@
 
-# Teknik Servis React Projesi
+# Te## Özellikler
+- **Kullanıcı Girişi:** Ant Design ile şık ve güvenli login ekranı
+- **Kullanıcı Kaydı:** Yeni kullanıcı kayıt formu ile hesap oluşturma
+- **Müşteri Yönetimi:** Tam CRUD işlemleri (Ekle, Listele, Güncelle, Sil) - Sol taraflı buton yerleşimi
+- **Dark/Light Tema:** Güneş ve ay ikonları ile tema değiştirme
+- **Form Doğrulama:** E-posta formatı ve şifre eşleşme doğrulaması
+- **Açık mavi footer:** Koyu siyah yazılı sabit footer (z-index ile en üstte)
+- **Müşteri ve Servis Takibi:** Müşteri, cihaz ve servis kayıtlarını kolayca yönetme (geliştirilebilir)
+- **Responsive Tasarım:** Tüm cihazlarda uyumlu ve modern arayüz
+- **Kolay Kurulum:** Docker ve docker-compose ile hızlı başlatmais React Projesi
 
 Bu proje, teknik servis yönetimi için modern bir web uygulamasıdır. Kullanıcı dostu arayüzü ve güçlü altyapısı ile servis taleplerinin, müşteri bilgilerinin ve işlemlerin kolayca yönetilmesini sağlar.
 
@@ -70,7 +79,8 @@ my-react-app/
 2. Tarayıcıda http://localhost:3000 adresine gidin
 3. Giriş yapmak için mevcut hesap kullanın veya "Kayıt olun" linkine tıklayın
 4. Başarılı giriş sonrası müşteri yönetim paneline yönlendirileceksiniz
-5. Müşteri ekleme, düzenleme ve silme işlemlerini gerçekleştirebilirsiniz
+5. Üst sağdaki güneş/ay ikonuna tıklayarak dark/light tema arasında geçiş yapın
+6. Müşteri ekleme, düzenleme ve silme işlemlerini gerçekleştirebilirsiniz
 
 ## Katkı ve Geliştirme
 Projeye katkıda bulunmak için fork'layabilir veya pull request gönderebilirsiniz. Yeni özellik talepleriniz ve hata bildirimleriniz için issue açabilirsiniz.

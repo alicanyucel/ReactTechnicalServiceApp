@@ -4,14 +4,14 @@ import './App.css';
 import Login from './Login';
 import Register from './Register';
 import CustomerCRUD from './CustomerCRUD';
+import { ThemeProvider, useTheme } from './ThemeContext';
+import { SunOutlined, MoonOutlined } from '@ant-design/icons';
+import { Button, Space } from 'antd';
 
-function App() {
+function AppContent() {
   const [currentScreen, setCurrentScreen] = useState('login');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  // HIZLI TEST İÇİN: Bu satırları aktifleştirip login ekranını bypass edebilirsiniz
-  // const [isLoggedIn, setIsLoggedIn] = useState(true);
-  // const [currentScreen, setCurrentScreen] = useState('dashboard');
+  const { isDarkMode, toggleTheme, colors } = useTheme();
 
   const switchToRegister = () => {
     setCurrentScreen('register');
@@ -22,7 +22,6 @@ function App() {
   };
 
   const handleLogin = (values) => {
-    // Basit login kontrolü - gerçek uygulamada API çağrısı yapılacak
     console.log('Login:', values);
     setIsLoggedIn(true);
     setCurrentScreen('dashboard');
@@ -35,22 +34,44 @@ function App() {
 
   if (isLoggedIn && currentScreen === 'dashboard') {
     return (
-      <div className="App">
-        <div style={{ padding: 16, background: '#001529', color: 'white', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-          <h2>Teknik Servis Yönetim Sistemi</h2>
-          <button
-            onClick={handleLogout}
-            style={{
-              background: '#ff4d4f',
-              color: 'white',
-              border: 'none',
-              padding: '8px 16px',
-              borderRadius: '4px',
-              cursor: 'pointer'
-            }}
-          >
-            Çıkış Yap
-          </button>
+      <div className="App" style={{ backgroundColor: colors.background, color: colors.text, minHeight: '100vh' }}>
+        <div style={{
+          padding: 16,
+          background: isDarkMode ? '#1f1f1f' : '#001529',
+          color: 'white',
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          borderBottom: `1px solid ${colors.border}`
+        }}>
+          <h2 style={{ margin: 0, color: colors.text }}>Teknik Servis Yönetimi</h2>
+          <Space>
+            <Button
+              type="text"
+              icon={isDarkMode ? <SunOutlined /> : <MoonOutlined />}
+              onClick={toggleTheme}
+              style={{
+                color: colors.text,
+                border: `1px solid ${colors.border}`,
+                backgroundColor: colors.surface
+              }}
+            >
+              {isDarkMode ? 'Açık Tema' : 'Koyu Tema'}
+            </Button>
+            <button
+              onClick={handleLogout}
+              style={{
+                background: '#ff4d4f',
+                color: 'white',
+                border: 'none',
+                padding: '8px 16px',
+                borderRadius: '4px',
+                cursor: 'pointer'
+              }}
+            >
+              Çıkış Yap
+            </button>
+          </Space>
         </div>
         <CustomerCRUD />
 
@@ -62,12 +83,13 @@ function App() {
           right: 0,
           zIndex: 9999,
           padding: 16,
-          backgroundColor: '#87CEEB',
-          color: '#000000',
+          backgroundColor: colors.primary,
+          color: colors.text,
           textAlign: 'center',
           fontSize: 14,
           fontWeight: 'bold',
-          boxShadow: '0 -2px 8px rgba(0,0,0,0.1)'
+          boxShadow: isDarkMode ? '0 -2px 8px rgba(255,255,255,0.1)' : '0 -2px 8px rgba(0,0,0,0.1)',
+          borderTop: `1px solid ${colors.border}`
         }}>
           © 2025 Mudbey Yazılım - Tüm Hakları Saklıdır
         </div>
@@ -76,7 +98,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className="App" style={{ backgroundColor: colors.background, color: colors.text, minHeight: '100vh' }}>
       {currentScreen === 'login' ? (
         <Login onSwitchToRegister={switchToRegister} onLogin={handleLogin} />
       ) : (
@@ -91,16 +113,25 @@ function App() {
         right: 0,
         zIndex: 9999,
         padding: 16,
-        backgroundColor: '#87CEEB',
-        color: '#000000',
+        backgroundColor: colors.primary,
+        color: colors.text,
         textAlign: 'center',
         fontSize: 14,
         fontWeight: 'bold',
-        boxShadow: '0 -2px 8px rgba(0,0,0,0.1)'
+        boxShadow: isDarkMode ? '0 -2px 8px rgba(255,255,255,0.1)' : '0 -2px 8px rgba(0,0,0,0.1)',
+        borderTop: `1px solid ${colors.border}`
       }}>
         © 2025 Mudbey Yazılım - Tüm Hakları Saklıdır
       </div>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <ThemeProvider>
+      <AppContent />
+    </ThemeProvider>
   );
 }
 

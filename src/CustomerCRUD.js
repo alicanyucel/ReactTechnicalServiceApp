@@ -14,6 +14,7 @@ import {
 } from 'antd';
 import { PlusOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import 'antd/dist/reset.css';
+import { useTheme } from './ThemeContext';
 
 const { Title } = Typography;
 const { Option } = Select;
@@ -25,6 +26,7 @@ const CustomerType = {
 };
 
 const CustomerCRUD = () => {
+  const { colors, isDarkMode } = useTheme();
   const [customers, setCustomers] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [editingCustomer, setEditingCustomer] = useState(null);
@@ -191,15 +193,16 @@ const CustomerCRUD = () => {
   ];
 
   return (
-    <div style={{ padding: 24 }}>
-      <Card>
+    <div style={{ padding: 24, backgroundColor: colors.background, color: colors.text }}>
+      <Card style={{ backgroundColor: colors.surface, borderColor: colors.border }}>
         <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', marginBottom: 16, gap: 16 }}>
-          <Title level={2} style={{ margin: 0 }}>Müşteri Yönetimi</Title>
+          <Title level={2} style={{ margin: 0, color: colors.text }}>Müşteri Yönetimi</Title>
           <Button
             type="primary"
             icon={<PlusOutlined />}
             onClick={() => showModal()}
             size="large"
+            style={{ backgroundColor: colors.primary, borderColor: colors.primary }}
           >
             Yeni Müşteri Ekle
           </Button>
@@ -221,11 +224,12 @@ const CustomerCRUD = () => {
         />
 
         <Modal
-          title={editingCustomer ? "Müşteri Düzenle" : "Yeni Müşteri Ekle"}
+          title={<span style={{ color: colors.text }}>{editingCustomer ? "Müşteri Düzenle" : "Yeni Müşteri Ekle"}</span>}
           open={isModalVisible}
           onCancel={handleCancel}
           footer={null}
           width={800}
+          bodyStyle={{ backgroundColor: colors.surface }}
         >
           <Form
             form={form}
