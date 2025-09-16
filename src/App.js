@@ -5,13 +5,13 @@ import Login from './Login';
 import Register from './Register';
 import CustomerCRUD from './CustomerCRUD';
 import { ThemeProvider, useTheme } from './ThemeContext';
-import { SunOutlined, MoonOutlined } from '@ant-design/icons';
+import { SunOutlined, MoonOutlined, FireOutlined } from '@ant-design/icons';
 import { Button, Space } from 'antd';
 
 function AppContent() {
   const [currentScreen, setCurrentScreen] = useState('login');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const { isDarkMode, toggleTheme, colors } = useTheme();
+  const { currentTheme, toggleTheme, colors } = useTheme();
 
   const switchToRegister = () => {
     setCurrentScreen('register');
@@ -32,13 +32,35 @@ function AppContent() {
     setCurrentScreen('login');
   };
 
+  const getThemeIcon = () => {
+    switch (currentTheme) {
+      case 'dark':
+        return <MoonOutlined />;
+      case 'yellow-red':
+        return <FireOutlined />;
+      default:
+        return <SunOutlined />;
+    }
+  };
+
+  const getThemeText = () => {
+    switch (currentTheme) {
+      case 'dark':
+        return 'Koyu Tema';
+      case 'yellow-red':
+        return 'Sarı-Kırmızı Tema';
+      default:
+        return 'Açık Tema';
+    }
+  };
+
   if (isLoggedIn && currentScreen === 'dashboard') {
     return (
       <div className="App" style={{ backgroundColor: colors.background, color: colors.text, minHeight: '100vh' }}>
         <div style={{
           padding: 16,
-          background: isDarkMode ? '#1f1f1f' : '#001529',
-          color: 'white',
+          background: colors.surface,
+          color: colors.text,
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
@@ -48,7 +70,7 @@ function AppContent() {
           <Space>
             <Button
               type="text"
-              icon={isDarkMode ? <SunOutlined /> : <MoonOutlined />}
+              icon={getThemeIcon()}
               onClick={toggleTheme}
               style={{
                 color: colors.text,
@@ -56,7 +78,7 @@ function AppContent() {
                 backgroundColor: colors.surface
               }}
             >
-              {isDarkMode ? 'Açık Tema' : 'Koyu Tema'}
+              {getThemeText()}
             </Button>
             <button
               onClick={handleLogout}

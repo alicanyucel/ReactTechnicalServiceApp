@@ -1,10 +1,12 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox, Card, Typography } from 'antd';
 import 'antd/dist/reset.css';
+import { useTheme } from './ThemeContext';
 
 const { Link } = Typography;
 
 const Register = ({ onSwitchToLogin }) => {
+  const { colors } = useTheme();
   const onFinish = (values) => {
     console.log('Success:', values);
     // Kayıt işlemleri burada yapılabilir
@@ -15,8 +17,8 @@ const Register = ({ onSwitchToLogin }) => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <Card title={<div style={{textAlign: 'center', width: '100%'}}>Kayıt Ol</div>} style={{ width: 400 }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: colors.background }}>
+      <Card title={<div style={{textAlign: 'center', width: '100%', color: colors.text}}>Kayıt Ol</div>} style={{ width: 400, backgroundColor: colors.surface, borderColor: colors.border }}>
         <Form
           name="register"
           initialValues={{ remember: true }}
@@ -30,7 +32,7 @@ const Register = ({ onSwitchToLogin }) => {
             name="username"
             rules={[{ required: true, message: 'Lütfen kullanıcı adınızı girin!' }]}
           >
-            <Input />
+            <Input style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
           </Form.Item>
 
           <Form.Item
@@ -41,7 +43,7 @@ const Register = ({ onSwitchToLogin }) => {
               { type: 'email', message: 'Geçerli bir e-posta girin!' }
             ]}
           >
-            <Input />
+            <Input style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
           </Form.Item>
 
           <Form.Item
@@ -49,7 +51,7 @@ const Register = ({ onSwitchToLogin }) => {
             name="password"
             rules={[{ required: true, message: 'Lütfen şifrenizi girin!' }]}
           >
-            <Input.Password />
+            <Input.Password style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
           </Form.Item>
 
           <Form.Item
@@ -68,21 +70,21 @@ const Register = ({ onSwitchToLogin }) => {
               }),
             ]}
           >
-            <Input.Password />
+            <Input.Password style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
           </Form.Item>
 
           <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-            <Checkbox>Kullanım koşullarını kabul ediyorum</Checkbox>
+            <Checkbox style={{ color: colors.text }}>Kullanım koşullarını kabul ediyorum</Checkbox>
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }} style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" style={{ backgroundColor: colors.primary, borderColor: colors.primary }}>
               Kayıt Ol
             </Button>
           </Form.Item>
         </Form>
         <div style={{ textAlign: 'center', marginTop: 16 }}>
-          <Link onClick={onSwitchToLogin}>Zaten hesabınız var mı? Giriş yapın</Link>
+          <Link onClick={onSwitchToLogin} style={{ color: colors.primary }}>Zaten hesabınız var mı? Giriş yapın</Link>
         </div>
       </Card>
     </div>

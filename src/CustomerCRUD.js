@@ -26,7 +26,7 @@ const CustomerType = {
 };
 
 const CustomerCRUD = () => {
-  const { colors, isDarkMode } = useTheme();
+  const { colors, currentTheme, isDarkMode, isYellowRedMode } = useTheme();
   const [customers, setCustomers] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [editingCustomer, setEditingCustomer] = useState(null);

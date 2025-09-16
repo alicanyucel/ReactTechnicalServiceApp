@@ -5,42 +5,74 @@ const ThemeContext = createContext();
 
 // Tema sağlayıcı
 export const ThemeProvider = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [currentTheme, setCurrentTheme] = useState('light'); // 'light', 'dark', 'yellow-red'
 
   // LocalStorage'dan tema tercihini yükle
   useEffect(() => {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
-      setIsDarkMode(savedTheme === 'dark');
+      setCurrentTheme(savedTheme);
     } else {
       // Sistem tercihini kontrol et
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setIsDarkMode(prefersDark);
+      setCurrentTheme(prefersDark ? 'dark' : 'light');
     }
   }, []);
 
   // Tema değişikliğinde localStorage'a kaydet
   useEffect(() => {
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-    document.body.style.backgroundColor = isDarkMode ? '#141414' : '#ffffff';
-  }, [isDarkMode]);
+    localStorage.setItem('theme', currentTheme);
+    document.body.style.backgroundColor = getThemeColors().background;
+  }, [currentTheme]);
+
+  const getThemeColors = () => {
+    switch (currentTheme) {
+      case 'dark':
+        return {
+          background: '#141414',
+          surface: '#1f1f1f',
+          text: '#ffffff',
+          textSecondary: '#a6a6a6',
+          border: '#303030',
+          primary: '#177ddc',
+          hover: '#2a2a2a',
+        };
+      case 'yellow-red':
+        return {
+          background: '#fff8e1', // Açık sarı
+          surface: '#fff3c4', // Orta sarı
+          text: '#d32f2f', // Kırmızı
+          textSecondary: '#f57c00', // Turuncu-kırmızı
+          border: '#ffcc02', // Sarı border
+          primary: '#ff6f00', // Turuncu
+          hover: '#ffe082', // Açık sarı hover
+        };
+      default: // light
+        return {
+          background: '#ffffff',
+          surface: '#fafafa',
+          text: '#000000',
+          textSecondary: '#666666',
+          border: '#d9d9d9',
+          primary: '#1890ff',
+          hover: '#f0f0f0',
+        };
+    }
+  };
 
   const toggleTheme = () => {
-    setIsDarkMode(!isDarkMode);
+    const themes = ['light', 'dark', 'yellow-red'];
+    const currentIndex = themes.indexOf(currentTheme);
+    const nextIndex = (currentIndex + 1) % themes.length;
+    setCurrentTheme(themes[nextIndex]);
   };
 
   const theme = {
-    isDarkMode,
+    currentTheme,
     toggleTheme,
-    colors: {
-      background: isDarkMode ? '#141414' : '#ffffff',
-      surface: isDarkMode ? '#1f1f1f' : '#fafafa',
-      text: isDarkMode ? '#ffffff' : '#000000',
-      textSecondary: isDarkMode ? '#a6a6a6' : '#666666',
-      border: isDarkMode ? '#303030' : '#d9d9d9',
-      primary: isDarkMode ? '#177ddc' : '#1890ff',
-      hover: isDarkMode ? '#2a2a2a' : '#f0f0f0',
-    }
+    colors: getThemeColors(),
+    isDarkMode: currentTheme === 'dark',
+    isYellowRedMode: currentTheme === 'yellow-red',
   };
 
   return (

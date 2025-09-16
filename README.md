@@ -3,9 +3,9 @@
 - **Kullanıcı Girişi:** Ant Design ile şık ve güvenli login ekranı
 - **Kullanıcı Kaydı:** Yeni kullanıcı kayıt formu ile hesap oluşturma
 - **Müşteri Yönetimi:** Tam CRUD işlemleri (Ekle, Listele, Güncelle, Sil) - Sol taraflı buton yerleşimi
-- **Dark/Light Tema:** Güneş ve ay ikonları ile tema değiştirme
+- **Üç Tema Desteği:** Güneş, ay ve ateş ikonları ile açık/koyu/sarı-kırmızı tema değiştirme
 - **Form Doğrulama:** E-posta formatı ve şifre eşleşme doğrulaması
-- **Açık mavi footer:** Koyu siyah yazılı sabit footer (z-index ile en üstte)
+- **Footer:** Açık mavi arka planlı, koyu siyah yazılı sabit footer (z-index ile en üstte)
 - **Müşteri ve Servis Takibi:** Müşteri, cihaz ve servis kayıtlarını kolayca yönetme (geliştirilebilir)
 - **Responsive Tasarım:** Tüm cihazlarda uyumlu ve modern arayüz
 - **Kolay Kurulum:** Docker ve docker-compose ile hızlı başlatmais React Projesi
@@ -79,7 +79,7 @@ my-react-app/
 2. Tarayıcıda http://localhost:3000 adresine gidin
 3. Giriş yapmak için mevcut hesap kullanın veya "Kayıt olun" linkine tıklayın
 4. Başarılı giriş sonrası müşteri yönetim paneline yönlendirileceksiniz
-5. Üst sağdaki güneş/ay ikonuna tıklayarak dark/light tema arasında geçiş yapın
+5. Üst sağdaki güneş/ay/ateş ikonuna tıklayarak açık/koyu/sarı-kırmızı tema arasında geçiş yapın
 6. Müşteri ekleme, düzenleme ve silme işlemlerini gerçekleştirebilirsiniz
 
 ## Katkı ve Geliştirme

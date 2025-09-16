@@ -1,10 +1,12 @@
 import React from 'react';
 import { Form, Input, Button, Checkbox, Card, Typography } from 'antd';
 import 'antd/dist/reset.css';
+import { useTheme } from './ThemeContext';
 
 const { Link } = Typography;
 
 const Login = ({ onSwitchToRegister, onLogin }) => {
+  const { colors } = useTheme();
   const onFinish = (values) => {
     console.log('Success:', values);
     // Giriş işlemleri burada yapılabilir
@@ -18,8 +20,8 @@ const Login = ({ onSwitchToRegister, onLogin }) => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-  <Card title={<div style={{textAlign: 'center', width: '100%'}}>Giriş Yap</div>} style={{ width: 400 }}>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: colors.background }}>
+  <Card title={<div style={{textAlign: 'center', width: '100%', color: colors.text}}>Giriş Yap</div>} style={{ width: 400, backgroundColor: colors.surface, borderColor: colors.border }}>
         <Form
           name="login"
           initialValues={{ remember: true }}
@@ -33,7 +35,7 @@ const Login = ({ onSwitchToRegister, onLogin }) => {
             name="username"
             rules={[{ required: true, message: 'Lütfen kullanıcı adınızı girin!' }]}
           >
-            <Input />
+            <Input style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
           </Form.Item>
 
           <Form.Item
@@ -41,21 +43,21 @@ const Login = ({ onSwitchToRegister, onLogin }) => {
             name="password"
             rules={[{ required: true, message: 'Lütfen şifrenizi girin!' }]}
           >
-            <Input.Password />
+            <Input.Password style={{ backgroundColor: colors.surface, color: colors.text, borderColor: colors.border }} />
           </Form.Item>
 
           <Form.Item name="remember" valuePropName="checked" wrapperCol={{ offset: 8, span: 16 }}>
-            <Checkbox>Beni Hatırla</Checkbox>
+            <Checkbox style={{ color: colors.text }}>Beni Hatırla</Checkbox>
           </Form.Item>
 
           <Form.Item wrapperCol={{ offset: 8, span: 16 }} style={{ display: 'flex', justifyContent: 'center' }}>
-            <Button type="primary" htmlType="submit">
+            <Button type="primary" htmlType="submit" style={{ backgroundColor: colors.primary, borderColor: colors.primary }}>
               Giriş Yap
             </Button>
           </Form.Item>
         </Form>
         <div style={{ textAlign: 'center', marginTop: 16 }}>
-          <Link onClick={onSwitchToRegister}>Hesabınız yok mu? Kayıt olun</Link>
+          <Link onClick={onSwitchToRegister} style={{ color: colors.primary }}>Hesabınız yok mu? Kayıt olun</Link>
         </div>
       </Card>
     </div>
