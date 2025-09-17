@@ -123,31 +123,43 @@ const CustomerCRUD = () => {
       dataIndex: 'id',
       key: 'id',
       width: 80,
+      sorter: (a, b) => a.id - b.id,
+      sortDirections: ['ascend', 'descend'],
     },
     {
       title: t('customer.name'),
       dataIndex: 'name',
       key: 'name',
+      sorter: (a, b) => (a.name || '').localeCompare(b.name || ''),
+      sortDirections: ['ascend', 'descend'],
     },
     {
       title: t('customer.surname'),
       dataIndex: 'surname',
       key: 'surname',
+      sorter: (a, b) => (a.surname || '').localeCompare(b.surname || ''),
+      sortDirections: ['ascend', 'descend'],
     },
     {
       title: t('customer.phone'),
       dataIndex: 'phoneNumber',
       key: 'phoneNumber',
+      sorter: (a, b) => (a.phoneNumber || '').localeCompare(b.phoneNumber || ''),
+      sortDirections: ['ascend', 'descend'],
     },
     {
       title: t('customer.email'),
       dataIndex: 'email',
       key: 'email',
+      sorter: (a, b) => (a.email || '').localeCompare(b.email || ''),
+      sortDirections: ['ascend', 'descend'],
     },
     {
       title: t('customer.city'),
       dataIndex: 'city',
       key: 'city',
+      sorter: (a, b) => (a.city || '').localeCompare(b.city || ''),
+      sortDirections: ['ascend', 'descend'],
     },
     {
       title: t('customer.type'),
@@ -161,6 +173,8 @@ const CustomerCRUD = () => {
           {type === CustomerType.Individual ? t('customer.individual') : t('customer.corporate')}
         </span>
       ),
+      sorter: (a, b) => ((a.customerType || '').localeCompare(b.customerType || '')),
+      sortDirections: ['ascend', 'descend'],
     },
     {
       title: t('customer.edit'),
