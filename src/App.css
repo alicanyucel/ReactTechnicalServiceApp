@@ -36,3 +36,28 @@
     transform: rotate(360deg);
   }
 }
+
+/* Improve spacing and clickable area for Ant Design table sort icons */
+.ant-table-column-sorters {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px; /* space between text and icons */
+}
+
+/* Increase hit area for sort icons specifically */
+.ant-table-column-sorter-up, .ant-table-column-sorter-down {
+  padding: 6px; /* larger clickable area */
+  border-radius: 4px;
+}
+
+/* Footer helper classes for larger, bolder text */
+.app-footer-title {
+  font-size: 14px; /* larger than previous 12px */
+  font-weight: 700; /* bold */
+}
+
+.app-footer-subtitle {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.95;
+}

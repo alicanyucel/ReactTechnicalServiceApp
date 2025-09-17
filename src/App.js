@@ -138,7 +138,7 @@ function AppContent() {
         }}>
           <div style={{ height: 6, background: colors.primary, width: '100%' }} />
           <div style={{ padding: '10px 16px' }}>
-            <div style={{ marginBottom: 4, color: colors.text }}>
+            <div className="app-footer-title" style={{ marginBottom: 4, color: colors.text }}>
               {t('footer.copyright')} | {t('footer.developedBy')}
             </div>
           </div>
@@ -174,10 +174,10 @@ function AppContent() {
         }}>
           <div style={{ height: 6, background: colors.primary, width: '100%' }} />
           <div style={{ padding: '10px 16px' }}>
-            <div style={{ marginBottom: 4, color: colors.text }}>
+            <div className="app-footer-title" style={{ marginBottom: 4, color: colors.text }}>
               {t('footer.copyright')} | {t('footer.developedBy')}
             </div>
-            <div style={{ fontSize: 11, opacity: 0.85, color: colors.textSecondary }}>
+            <div className="app-footer-subtitle" style={{ color: colors.textSecondary }}>
               {t('footer.description')} - {t('footer.version')}
             </div>
           </div>
