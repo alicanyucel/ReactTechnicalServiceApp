@@ -95,7 +95,7 @@ function AppContent() {
     return (
       <ConfigProvider locale={getAntdLocale()}>
         <div className="App" style={{ backgroundColor: colors.background, color: colors.text, minHeight: '100vh' }}>
-        <div style={{
+        <div className="app-topbar" style={{
           padding: 16,
           background: colors.surface,
           color: colors.text,

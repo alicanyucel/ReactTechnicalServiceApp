@@ -61,3 +61,61 @@
   font-weight: 600;
   opacity: 0.95;
 }
+
+/* Responsive adjustments for header and Customer CRUD toolbar */
+.app-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+.customer-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+
+.customer-toolbar .add-button {
+  flex: 0 0 auto;
+}
+
+.customer-toolbar .search-input {
+  flex: 1 1 auto;
+  min-width: 0; /* allow it to shrink on small screens */
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .app-topbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .customer-toolbar {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .customer-toolbar .search-input {
+    order: 2;
+  }
+}
+
+/* Mobile: stack toolbar vertically for narrow screens */
+@media (max-width: 480px) {
+  .customer-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .customer-toolbar .add-button {
+    width: 100%;
+  }
+
+  .customer-toolbar .search-input {
+    width: 100%;
+  }
+}

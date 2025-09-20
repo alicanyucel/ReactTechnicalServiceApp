@@ -229,11 +229,12 @@ const CustomerCRUD = () => {
   return (
     <div style={{ padding: 24, backgroundColor: colors.background, color: colors.text }}>
       <Card style={{ backgroundColor: colors.surface, borderColor: colors.border }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, gap: 16 }}>
+        <div className="customer-toolbar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, gap: 16 }}>
           <Title level={2} style={{ margin: 0, color: colors.text, flex: '0 0 auto' }}>{t('customer.management')}</Title>
 
           <div style={{ display: 'flex', alignItems: 'center', gap: 16, flex: 1, minWidth: 260 }}>
             <Button
+              className="add-button"
               type="primary"
               icon={<PlusOutlined />}
               onClick={() => showModal()}
@@ -244,6 +245,7 @@ const CustomerCRUD = () => {
             </Button>
 
             <Input
+              className="search-input"
               placeholder={t('customerSearch.placeholder')}
               allowClear
               prefix={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={colors.icon || colors.text} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>}
