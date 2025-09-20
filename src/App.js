@@ -107,7 +107,7 @@ function AppContent() {
           <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
             <h2 style={{ margin: 0, color: colors.text }}>{t('app.title')}</h2>
             {user && (
-              <div style={{ fontSize: 12, color: colors.textSecondary, marginTop: 4 }}>
+              <div style={{ fontSize: 13, color: colors.text, marginTop: 6, fontWeight: 700 }}>
                 {t('auth.welcome', { name: user?.name || user?.fullName || user?.userName || user?.displayName || user?.email || '' })}
               </div>
             )}
