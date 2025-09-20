@@ -1,12 +1,12 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import Login from './Login';
 import Register from './Register';
 import CustomerCRUD from './CustomerCRUD';
 import { ThemeProvider, useTheme } from './ThemeContext';
 import { SunOutlined, MoonOutlined, FireOutlined, GlobalOutlined } from '@ant-design/icons';
-import { Button, Space, ConfigProvider } from 'antd';
+import { Button, Space, ConfigProvider, notification } from 'antd';
 import { useTranslation } from 'react-i18next';
 import trTR from 'antd/locale/tr_TR';
 import enUS from 'antd/locale/en_US';
@@ -14,8 +14,14 @@ import enUS from 'antd/locale/en_US';
 function AppContent() {
   const [currentScreen, setCurrentScreen] = useState('login');
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [user, setUser] = useState(null);
   const { currentTheme, toggleTheme, colors } = useTheme();
   const { t, i18n } = useTranslation();
+
+  useEffect(() => {
+    // show notifications at top-right (toastr sağ üstte) and shorten display to 2s
+    notification.config({ placement: 'topRight', duration: 2 });
+  }, []);
 
   const getAntdLocale = () => {
     return i18n.language === 'tr' ? trTR : enUS;
@@ -29,8 +35,11 @@ function AppContent() {
     setCurrentScreen('login');
   };
 
-  const handleLogin = (values) => {
-    console.log('Login:', values);
+  const handleLogin = (loginData) => {
+    // loginData is the server response (may contain user/token)
+    console.log('Login data:', loginData);
+    const u = loginData?.user || loginData || null;
+    setUser(u);
     setIsLoggedIn(true);
     setCurrentScreen('dashboard');
   };
@@ -38,6 +47,17 @@ function AppContent() {
   const handleLogout = () => {
     setIsLoggedIn(false);
     setCurrentScreen('login');
+    setUser(null);
+    try {
+      // clear client-side auth
+      // eslint-disable-next-line global-require
+      const { deleteCookie } = require('./utils/cookieUtils');
+      deleteCookie('auth_token');
+      deleteCookie('auth_user');
+      deleteCookie('auth_raw');
+    } catch (e) {
+      localStorage.removeItem('auth');
+    }
   };
 
   const getThemeIcon = () => {
@@ -84,7 +104,14 @@ function AppContent() {
           alignItems: 'center',
           borderBottom: `1px solid ${colors.border}`
         }}>
-          <h2 style={{ margin: 0, color: colors.text }}>{t('app.title')}</h2>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            <h2 style={{ margin: 0, color: colors.text }}>{t('app.title')}</h2>
+            {user && (
+              <div style={{ fontSize: 12, color: colors.textSecondary, marginTop: 4 }}>
+                {t('auth.welcome', { name: user?.name || user?.fullName || user?.userName || user?.displayName || user?.email || '' })}
+              </div>
+            )}
+          </div>
           <Space>
             <Button
               type="text"

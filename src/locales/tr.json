@@ -68,6 +68,11 @@
     "passwordMismatch": "Şifreler eşleşmiyor",
     "minLength": "En az {{count}} karakter olmalıdır"
   },
+  "auth": {
+    "welcome": "Hoşgeldiniz, {{name}}",
+    "loginFailed": "Giriş başarısız",
+    "loginSuccess": "Giriş başarılı!"
+  },
   "pagination": {
     "showTotal": "{{total}} müşteri arasından {{start}}-{{end}} arası gösteriliyor"
   }
