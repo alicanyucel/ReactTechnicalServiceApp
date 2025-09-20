@@ -192,8 +192,9 @@ const CustomerCRUD = () => {
           <Popconfirm
             title={t('customer.confirmDelete')}
             onConfirm={() => handleDelete(record.id)}
-            okText={t('customer.save')}
+            okText={t('customer.delete')}
             cancelText={t('customer.cancel')}
+            okType="danger"
           >
             <Button
               type="danger"
@@ -365,7 +366,7 @@ const CustomerCRUD = () => {
                   {t('customer.cancel')}
                 </Button>
                 <Button type="primary" htmlType="submit">
-                  {editingCustomer ? t('customer.save') : t('customer.save')}
+                  {editingCustomer ? t('customer.delete') : t('customer.delete')}
                 </Button>
               </Space>
             </Form.Item>
