@@ -243,12 +243,12 @@ const CustomerCRUD = () => {
               {t('customer.addNew')}
             </Button>
 
-            <Input.Search
+            <Input
               placeholder={t('customerSearch.placeholder')}
               allowClear
-              enterButton
-              onSearch={setSearchText}
+              prefix={<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke={colors.icon || colors.text} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>}
               onChange={e => setSearchText(e.target.value)}
+              onPressEnter={() => { /* trigger same as search */ }}
               value={searchText}
               style={{ flex: 1, minWidth: 0 }}
             />
