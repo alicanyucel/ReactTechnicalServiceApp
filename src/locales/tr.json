@@ -73,6 +73,9 @@
     "loginFailed": "Giriş başarısız",
     "loginSuccess": "Giriş başarılı!"
   },
+  "customerSearch": {
+    "placeholder": "Müşteri ara"
+  },
   "pagination": {
     "showTotal": "{{total}} müşteri arasından {{start}}-{{end}} arası gösteriliyor"
   }

@@ -73,6 +73,9 @@
     "loginFailed": "Login failed",
     "loginSuccess": "Login successful!"
   },
+  "customerSearch": {
+    "placeholder": "Search customer"
+  },
   "pagination": {
     "showTotal": "Showing {{start}}-{{end}} of {{total}} customers"
   }

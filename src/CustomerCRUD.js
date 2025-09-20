@@ -30,6 +30,8 @@ const CustomerCRUD = () => {
   const { colors, currentTheme } = useTheme();
   const { t } = useTranslation();
   const [customers, setCustomers] = useState([]);
+  const [filtered, setFiltered] = useState([]);
+  const [searchText, setSearchText] = useState('');
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [editingCustomer, setEditingCustomer] = useState(null);
   const [form] = Form.useForm();
@@ -69,7 +71,22 @@ const CustomerCRUD = () => {
       }
     ];
     setCustomers(mockCustomers);
+    setFiltered(mockCustomers);
   }, []);
+
+  useEffect(() => {
+    if (!searchText) {
+      setFiltered(customers);
+      return;
+    }
+    const q = searchText.toLowerCase();
+    setFiltered(customers.filter(c => (
+      (c.name || '').toLowerCase().includes(q) ||
+      (c.surname || '').toLowerCase().includes(q) ||
+      (c.phoneNumber || '').toLowerCase().includes(q) ||
+      (c.email || '').toLowerCase().includes(q)
+    )));
+  }, [searchText, customers]);
 
   const showModal = (customer = null) => {
     setEditingCustomer(customer);
@@ -212,22 +229,35 @@ const CustomerCRUD = () => {
   return (
     <div style={{ padding: 24, backgroundColor: colors.background, color: colors.text }}>
       <Card style={{ backgroundColor: colors.surface, borderColor: colors.border }}>
-        <div style={{ display: 'flex', justifyContent: 'flex-start', alignItems: 'center', marginBottom: 16, gap: 16 }}>
-          <Title level={2} style={{ margin: 0, color: colors.text }}>{t('customer.management')}</Title>
-          <Button
-            type="primary"
-            icon={<PlusOutlined />}
-            onClick={() => showModal()}
-            size="large"
-            style={{ backgroundColor: colors.primary, borderColor: colors.primary }}
-          >
-            {t('customer.addNew')}
-          </Button>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, gap: 16 }}>
+          <Title level={2} style={{ margin: 0, color: colors.text, flex: '0 0 auto' }}>{t('customer.management')}</Title>
+
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16, flex: 1, minWidth: 260 }}>
+            <Button
+              type="primary"
+              icon={<PlusOutlined />}
+              onClick={() => showModal()}
+              size="large"
+              style={{ backgroundColor: colors.primary, borderColor: colors.primary, flex: '0 0 auto' }}
+            >
+              {t('customer.addNew')}
+            </Button>
+
+            <Input.Search
+              placeholder={t('customerSearch.placeholder')}
+              allowClear
+              enterButton
+              onSearch={setSearchText}
+              onChange={e => setSearchText(e.target.value)}
+              value={searchText}
+              style={{ flex: 1, minWidth: 0 }}
+            />
+          </div>
         </div>
 
         <Table
           columns={columns}
-          dataSource={customers}
+          dataSource={filtered}
           rowKey="id"
           pagination={{
             pageSize: 10,
